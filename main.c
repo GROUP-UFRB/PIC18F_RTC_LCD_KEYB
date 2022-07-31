@@ -52,6 +52,7 @@ void set_datetime(){
 
 void main()
 {
+   int second, minute, hour, day, date, month, year;
 
    setup_oscillator(OSC_16MHZ);                      // Set internal oscillator to 8MHz
    setup_adc_ports(NO_ANALOGS);
@@ -73,6 +74,8 @@ void main()
          set_datetime();
       }
       delay_ms(100);
+
+      
    }
 
 }
