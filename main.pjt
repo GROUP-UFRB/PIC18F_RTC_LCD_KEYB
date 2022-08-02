@@ -1,5 +1,5 @@
 [PROJECT]
-Target=C:\Users\Joelp\Downloads\Sistemas Microcontrolados\RTC_project\main.hex
+Target=main.hex
 Development_Mode=
 Processor_Text=PIC18F4550
 ToolSuite=CCS
@@ -12,20 +12,20 @@ BuildTool=
 OptionString=
 AdditionalOptionString=
 [mru-list]
-1=C:\Users\Joelp\Downloads\Sistemas Microcontrolados\RTC_project\main.c
+1=main.c
 [Windows]
 0=0000 %S 0 0 796 451 3 0
 [Units]
 Link=0
 Count=1
-1=C:\Users\Joelp\Downloads\Sistemas Microcontrolados\RTC_project\main
+1=main
 [Opened Files]
-1=C:\Users\Joelp\Downloads\Sistemas Microcontrolados\RTC_project\main.c
-3=..\..\..\..\..\Program Files (x86)\PICC\devices\18F4550.h
-2=C:\Users\Joelp\Downloads\Sistemas Microcontrolados\RTC_project\RTC_handler.c
-4=C:\Users\Joelp\Downloads\Sistemas Microcontrolados\RTC_project\keyboard.c
+1=..\..\..\..\..\Program Files (x86)\PICC\drivers\lcd.c
+3=
+2=main.c
+4=keyboard.c
 5=
-[C:\Users\Joelp\Downloads\Sistemas Microcontrolados\RTC_project\main]
+[main]
 Type=4
 Path=
 FileList=
