@@ -27,7 +27,11 @@ void ds1307_write(unsigned int8 address, data_){
 }
 
 void ds1307_read(int *second, int *minute, int *hour, int *day, int* date, int *month, int* year){
-   i2c_start();                                  // Start I2C
+   i2c_start();
+   i2c_write(0xD0);                             /* slave address with write mode */
+   i2c_write(0x00);                                // Start I2C
+   i2c_stop();
+   i2c_start();
    i2c_write(0xD1);                              // Initialize data read
    *second =i2c_read(1);                          // Read seconds from register 0
    *minute =i2c_read(1);                          // Read minuts from register 1
@@ -38,3 +42,5 @@ void ds1307_read(int *second, int *minute, int *hour, int *day, int* date, int *
    *year = i2c_read(0);                           // Read year from register 6
    i2c_stop();                                   // Stop I2C
 }
+
+

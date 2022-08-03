@@ -6,20 +6,21 @@
 #fuses NOMCLR INTRC_IO
 
 #use delay(clock=16000000)
-#use rs232(baud=9600,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8)
+//#use rs232(baud=9600,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8)
 //#use fast_io(B)
 #use i2c(master,Fast,sda=PIN_B0,scl=PIN_B1)
 //#use I2C(master, I2C1, FAST = 100000)
+
 
 #include "keyboard.c"
 #include "RTC_handler.c"
 #include "utils.c"
 
 #define LCD_TYPE 2
-#include <lcd.c>
+#include <LCD4B.c>
 
-#include <stdio.h>
-#include <string.h>
+//#include <stdio.h>
+//#include <string.h>
 
 int8 two_d_keyboard(){
    /*
@@ -59,12 +60,12 @@ void set_datetime(){
 
 void main()
 {
-   int seconds, minutes, hours, days, date, months, year;
-   char time[30];
-   char display[40] = "\f";
 
-   seconds = 10;
-   minutes = 10;
+   int seconds, minutes, hours, days, date, months, year;
+   hours = 14;
+   minutes = 38;
+   seconds = 30;
+
    setup_oscillator(OSC_16MHZ);                      // Set internal oscillator to 8MHz
    setup_adc_ports(NO_ANALOGS);
    port_b_pullups(TRUE);// Enable PORTB pull-ups:
@@ -79,10 +80,7 @@ void main()
    /*
    LCD interaction
    */
-   lcd_init();
-   
-   lcd_gotoxy(1,1);
-   lcd_putc("\fReady...\n");
+   lcd_ini();
 
    while(1){
       
@@ -93,14 +91,11 @@ void main()
       }
       delay_ms(100);
 
-      //ds1307_read(&seconds, &minutes, &hours, &days, &date, &months, &year);
+      ds1307_read(&seconds, &minutes, &hours, &days, &date, &months, &year);
+      //ds1307_read();
 
-      sprintf(time, "%d:%d", minutes, seconds);
-      strcpy(display,"\f");
-      strcat(display, time);
-
-      lcd_gotoxy(1,1);
-      lcd_putc(display);
+      lcd_pos_xy(0,0);
+      printf(lcd_escreve, "\fTIME: %i:%i:%i", BCDtoDecimal(hours), BCDtoDecimal(minutes), BCDtoDecimal(seconds));
    }
 
 }

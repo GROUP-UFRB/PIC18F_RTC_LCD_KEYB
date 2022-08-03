@@ -20,10 +20,10 @@ Link=0
 Count=1
 1=main
 [Opened Files]
-1=..\..\..\..\..\Program Files (x86)\PICC\drivers\lcd.c
-3=
-2=main.c
-4=keyboard.c
+1=C:\Program Files (x86)\PICC\drivers\lcd.c
+3=main.c
+2=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\keyboard.c
+4=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\RTC_handler.c
 5=
 [main]
 Type=4
