@@ -51,10 +51,10 @@ void set_datetime(){
    ds1307_write(0, Dec2BCD(two_d_keyboard())); //seconds
    ds1307_write(1, Dec2BCD(two_d_keyboard())); //minute
    ds1307_write(2, Dec2BCD(two_d_keyboard())); //hour
-   ds1307_write(3, Dec2BCD(two_d_keyboard())); //day = day of the week with range start at 1 to 7
-   ds1307_write(4, Dec2BCD(two_d_keyboard())); //date = day of month: 1-31 
-   ds1307_write(5, Dec2BCD(two_d_keyboard())); //month: 1-12
-   ds1307_write(6, Dec2BCD(two_d_keyboard())); //year: 0-99
+   //ds1307_write(3, Dec2BCD(two_d_keyboard())); //day = day of the week with range start at 1 to 7
+   //ds1307_write(4, Dec2BCD(two_d_keyboard())); //date = day of month: 1-31 
+   //ds1307_write(5, Dec2BCD(two_d_keyboard())); //month: 1-12
+   //ds1307_write(6, Dec2BCD(two_d_keyboard())); //year: 0-99
    ds1307_write(0, 0); //only Jesus knows
 }
 
