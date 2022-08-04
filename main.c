@@ -32,7 +32,7 @@ int8 two_d_keyboard(){
    two_digits = 10*keyboard(PIN_A0, PIN_A4); //H0
 
    lcd_pos_xy(0,0);
-   printf(lcd_escreve, "\f %i _", two_digits);
+   printf(lcd_escreve, "\f %i", two_digits);
 
    two_digits = two_digits+keyboard(PIN_A0, PIN_A4);//H0+L = HL
 

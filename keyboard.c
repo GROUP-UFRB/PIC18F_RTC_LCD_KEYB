@@ -16,7 +16,10 @@ int8 keyboard(int L0, int C0){
         {11,0,12} //11 = *, 12 = #
     };
 
-    output_c(0);
+    output_bit(C0, 0);
+    output_bit(C0+1, 0);
+    output_bit(C0+2, 0);
+
     while (1) { //Keep running this while none of the key of keyboard is not pressioned
 
         for(i = 0; i < 4; i = i+1){ //for each line of the keyboard matrix
@@ -36,7 +39,6 @@ int8 keyboard(int L0, int C0){
                 
             }
             
-            output_bit(L0+i,0);
         }
     }
 
