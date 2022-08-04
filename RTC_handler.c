@@ -10,6 +10,9 @@ Part of this code was found on: http://ccspicc.blogspot.com/2016/09/pic18f4550-d
 
 void ds1307_write(unsigned int8 address, data_){
    /*
+   data_ must be in BCD encoding
+   */
+   /*
    Procedure to writing time and date:
       1.Initiate a START condition
       2. Transmit the RTC address 0xD0, with LSB 0 for write mode.
@@ -27,6 +30,9 @@ void ds1307_write(unsigned int8 address, data_){
 }
 
 void ds1307_read(int *second, int *minute, int *hour, int *day, int* date, int *month, int* year){
+   /*
+   The result readed is in BCD encoding
+   */
    i2c_start();
    i2c_write(0xD0);                             /* slave address with write mode */
    i2c_write(0x00);                                // Start I2C

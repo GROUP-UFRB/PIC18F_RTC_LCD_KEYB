@@ -21,9 +21,9 @@ Count=1
 1=main
 [Opened Files]
 1=C:\Program Files (x86)\PICC\drivers\lcd.c
-3=main.c
+3=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\RTC_handler.c
 2=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\keyboard.c
-4=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\RTC_handler.c
+4=main.c
 5=
 [main]
 Type=4

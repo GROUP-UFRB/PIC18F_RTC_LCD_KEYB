@@ -2,7 +2,7 @@ int8 keyboard(int L0, int C0){
     /*
     L0: Start address of pins to map the lines of keyboard. The next 3 address must be free.
     C0: Start address of pins to map the columns of keyboard. The next 2 must be free. 
-    Keyboard connected on PORTD of PIC18F4450.
+    Suggestion: Keyboard connected on PORTA of PIC18F4450.
     This function hundles the keyboard interaction.
     */
 
@@ -16,8 +16,7 @@ int8 keyboard(int L0, int C0){
         {11,0,12} //11 = *, 12 = #
     };
 
-    int8 v = -1;
-    
+    output_c(0);
     while (1) { //Keep running this while none of the key of keyboard is not pressioned
 
         for(i = 0; i < 4; i = i+1){ //for each line of the keyboard matrix
@@ -41,6 +40,4 @@ int8 keyboard(int L0, int C0){
         }
     }
 
-    
-    return v;
 }
