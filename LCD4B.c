@@ -1,3 +1,9 @@
+/*4 bits LCD writer and reader.
+
+unknow outhor. The outhor of the original library is unknow.
+This library have some changes of the oringal found on internet.
+*/
+
 #define EN PIN_D0
 #define RS PIN_D1
 #define D4 PIN_D4

@@ -6,10 +6,7 @@
 #fuses NOMCLR INTRC_IO
 
 #use delay(clock=16000000)
-//#use rs232(baud=9600,parity=N,xmit=PIN_C6,rcv=PIN_C7,bits=8)
-//#use fast_io(B)
 #use i2c(master,Fast,sda=PIN_B0,scl=PIN_B1)
-//#use I2C(master, I2C1, FAST = 100000)
 
 
 #include "keyboard.c"
@@ -66,7 +63,7 @@ void main()
    minutes = 38;
    seconds = 30;
 
-   setup_oscillator(OSC_16MHZ);                      // Set internal oscillator to 8MHz
+   setup_oscillator(OSC_16MHZ);                      // Set internal oscillator to 16MHz
    setup_adc_ports(NO_ANALOGS);
    port_b_pullups(TRUE);// Enable PORTB pull-ups:
    /*
@@ -74,12 +71,8 @@ void main()
    */
 
    set_tris_a(0xf); //00001111: D0, D1, D2, D3 as input ports
-
    output_b(0);
 
-   /*
-   LCD interaction
-   */
    lcd_ini();
 
    while(1){
