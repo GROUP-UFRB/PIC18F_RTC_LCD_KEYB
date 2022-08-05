@@ -1,45 +1,60 @@
-int8 keyboard(int L0, int C0){
-    /*
-    L0: Start address of pins to map the lines of keyboard. The next 3 address must be free.
-    C0: Start address of pins to map the columns of keyboard. The next 2 must be free. 
-    Suggestion: Keyboard connected on PORTA of PIC18F4450.
-    This function hundles the keyboard interaction.
-    */
 
-    //searching for the button pressioned
-    int8 i, j;
-
-    int8 value[4][3] = {
-        {1,2,3},
-        {4,5,6},
-        {7,8,9},
-        {11,0,12} //11 = *, 12 = #
-    };
-
-    output_bit(C0, 0);
-    output_bit(C0+1, 0);
-    output_bit(C0+2, 0);
-
-    while (1) { //Keep running this while none of the key of keyboard is not pressioned
-
-        for(i = 0; i < 4; i = i+1){ //for each line of the keyboard matrix
-            
-            //set line i.
-            for(j = 0; j < 3; j = j+1){ //for each column of the keyboard matrix, at line i
-                
-                output_bit(C0+j,1); //turn the column C0 + j to high state.
-                
-                if (input(L0+i)){ //return only if the cell at line i and column j is high 
-                    output_bit(C0+j,0);
-                    
-                    while (input(L0) | input(L0+1) | input(L0+2) | input(L0+3)); //wait user stop pressing the key to avoid repeated keys captured
-                    return value[i][j]; //get the value
-                }
-                output_bit(C0+j,0);
-                
-            }
-            
-        }
-    }
-
+int8 keypad_scanner()  
+{      
+    int D0_, D1_, D2_, D3_;
+    
+    delay_ms(15);
+    output_low(PIN_B0);
+    
+    D0_ = input(PIN_D0);
+    D1_ = input(PIN_D1);
+    D2_ = input(PIN_D2);
+    D3_ = input(PIN_D3);
+    
+    if ( D3_ == 0 ) { delay_ms(100); while( input(PIN_D3) == 0 ); return 1; }
+    else if ( D2_ == 0 ) {delay_ms(100); while( input(PIN_D2) == 0 ); return 4; }
+    else if ( D1_ == 0 ) {delay_ms(100); while( input(PIN_D1) == 0 ); return 7; }
+    else if ( D0_ == 0 ) {delay_ms(100); while( input(PIN_D0) == 0 ); return 11; } //*
+    
+    output_high(PIN_B0);
+    delay_ms(15);
+    output_low(PIN_B1);
+    
+    D0_ = input(PIN_D0);
+    D1_ = input(PIN_D1);
+    D2_ = input(PIN_D2);
+    D3_ = input(PIN_D3);
+    
+    if ( D3_ == 0 ) {delay_ms(100); while( input(PIN_D3) == 0 ); return 2; }
+    else if ( D2_ == 0 ) {delay_ms(100); while( input(PIN_D2) == 0 ); return 5; }
+    else if ( D1_ == 0 ) {delay_ms(100); while( input(PIN_D1) == 0 ); return 8; }
+    else if ( D0_ == 0 ) {delay_ms(100); while( input(PIN_D0) == 0 ); return 0; }
+    
+    output_high(PIN_B1);
+    delay_ms(15);
+    output_low(PIN_B2);
+    
+    D0_ = input(PIN_D0);
+    D1_ = input(PIN_D1);
+    D2_ = input(PIN_D2);
+    D3_ = input(PIN_D3);
+    
+    if ( D3_ == 0 ) {delay_ms(100); while( input(PIN_D3) == 0 ); return 3; }
+    else if ( D2_ == 0 ) {delay_ms(100); while( input(PIN_D2) == 0 ); return 6; }
+    else if ( D1_ == 0 ) {delay_ms(100); while( input(PIN_D1) == 0 ); return 9; }
+    else if ( D0_ == 0 ) {delay_ms(100); while( input(PIN_D0) == 0 ); return 12; } //#
+    
+    output_high(PIN_B2);
+        
+    return -1;                   
 }
+
+int8 switch_press_scan()                       // Get key from user
+{
+    int8 key = -1;              // Assume no key pressed
+    while(key==-1){ // Wait untill a key is pressed
+        key = keypad_scanner();   // Scan the keys again and again
+    }
+    return key;                  //when key pressed then return its value
+}
+

@@ -29,14 +29,14 @@ int8 two_d_keyboard(){
    Return a number formed by two keys pressioned
    */
 
-   two_digits = 10*keyboard(PIN_D0, PIN_B0); //H0
+   two_digits = 10*switch_press_scan(); //H0
 
-   lcd_pos_xy(0,0);
+   lcd_pos_xy(1,2);
    printf(lcd_escreve, "\f %i", two_digits);
 
-   two_digits = two_digits+keyboard(PIN_D0, PIN_B0);//H0+L = HL
+   two_digits = two_digits+switch_press_scan();//H0+L = HL
 
-   lcd_pos_xy(0,0);
+   lcd_pos_xy(1,2);
    printf(lcd_escreve, "\f %i", two_digits);
 
    return two_digits;
@@ -47,13 +47,13 @@ void set_datetime(){
    The datetime is provided by the used from keyboard.
    */
    //ds1307_write(0, Dec2BCD(two_d_keyboard())); //Seconds
-   lcd_pos_xy(0,0);
+   lcd_pos_xy(1,2);
    printf(lcd_escreve, "\f Write Minutes");
    delay_ms(100);
 
    ds1307_write(1, Dec2BCD(two_d_keyboard())); //Minutes
 
-   lcd_pos_xy(0,0);
+   lcd_pos_xy(1,2);
    printf(lcd_escreve, "\f Write Hours");
    delay_ms(100);
 
@@ -66,13 +66,16 @@ void set_datetime(){
 }
 
 void set_alarm_BCD(int8 *minutes, int8 *hours) {
-   lcd_pos_xy(0,0);
+   lcd_pos_xy(1,2);
    printf(lcd_escreve, "\f Set Alarm");
    delay_ms(500);
 
-   lcd_pos_xy(0,0);
+   lcd_pos_xy(1,2);
    printf(lcd_escreve, "\f Write minutes");
    *minutes = Dec2BCD(two_d_keyboard());
+
+   lcd_pos_xy(1,2);
+   printf(lcd_escreve, "\f Write Hours");
    *hours = Dec2BCD(two_d_keyboard());
 }
 
@@ -101,18 +104,18 @@ void main()
 
    while(1){
 
-
-       /*User interaction hundler */
-      if (input(PIN_A5)){
-        while(input(PIN_A5)); //wait for PIN back to default.
+      
+      //User interaction hundler
+      if (!input(PIN_A5)){
+        while(!input(PIN_A5)); //wait for PIN back to default.
 
          set_datetime();
-      }//else if (input(PIN_B4)) {
-         //while(input(PIN_B4));
+      }else if (!input(PIN_B5)) {
+         while(!input(PIN_B5));
 
-         //set_alarm_BCD(minutes_a, hours_a);
-      //}
-
+         set_alarm_BCD(minutes_a, hours_a);
+      }
+      
       delay_ms(100);
       ds1307_read(&seconds, &minutes, &hours, &days, &date, &months, &year);//get date and time
       //ds1307_read();
@@ -121,7 +124,7 @@ void main()
          //output_toggle(PIN_B3); // toggle while the minutes and hours is equals
       }
 
-      lcd_pos_xy(0,0);
+      lcd_pos_xy(1,1);
       printf(lcd_escreve, "\fTIME: %i:%i:%i", BCDtoDecimal(hours), BCDtoDecimal(minutes), BCDtoDecimal(seconds)); //write current time
    }
 

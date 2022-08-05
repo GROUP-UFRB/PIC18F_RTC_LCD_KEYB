@@ -20,12 +20,13 @@ Link=0
 Count=1
 1=main
 [Opened Files]
-1=C:\Users\Joelp\Documents\GitHub\PICGenius_RTC_LCD_KEYB\main.c
-3=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\keyboard.c
-2=C:\Program Files (x86)\PICC\drivers\lcd.c
-4=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\RTC_handler.c
-5=..\..\..\..\..\Program Files (x86)\PICC\devices\16F877.h
-6=
+1=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\main.c
+3=C:\Program Files (x86)\PICC\drivers\lcd.c
+2=C:\Users\Joelp\Documents\GitHub\PICGenius_RTC_LCD_KEYB\main.c
+4=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\keyboard.c
+5=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\RTC_handler.c
+6=..\..\..\..\..\Program Files (x86)\PICC\devices\16F877.h
+7=
 [main]
 Type=4
 Path=
