@@ -4,8 +4,8 @@ unknow outhor. The outhor of the original library is unknow.
 This library have some changes of the oringal found on internet.
 */
 
-#define EN PIN_D0
-#define RS PIN_D1
+#define EN PIN_E1
+#define RS PIN_E2
 #define D4 PIN_D4
 #define D5 PIN_D5
 #define D6 PIN_D6

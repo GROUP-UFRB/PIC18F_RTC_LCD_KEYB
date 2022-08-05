@@ -1,9 +1,9 @@
 [PROJECT]
 Target=main.hex
 Development_Mode=
-Processor_Text=PIC18F4550
+Processor_Text=PIC16F877
 ToolSuite=CCS
-Processor=0x4550
+Processor=0x877F
 [main]
 Type=4
 Path=
@@ -20,11 +20,12 @@ Link=0
 Count=1
 1=main
 [Opened Files]
-1=C:\Program Files (x86)\PICC\drivers\lcd.c
-3=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\RTC_handler.c
-2=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\keyboard.c
-4=main.c
-5=
+1=C:\Users\Joelp\Documents\GitHub\PICGenius_RTC_LCD_KEYB\main.c
+3=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\keyboard.c
+2=C:\Program Files (x86)\PICC\drivers\lcd.c
+4=C:\Users\Joelp\Documents\GitHub\PIC18F_RTC_LCD_KEYB\RTC_handler.c
+5=..\..\..\..\..\Program Files (x86)\PICC\devices\16F877.h
+6=
 [main]
 Type=4
 Path=
