@@ -113,7 +113,7 @@ void main()
       }else if (!input(PIN_B5)) {
          while(!input(PIN_B5));
 
-         set_alarm_BCD(minutes_a, hours_a);
+         set_alarm_BCD(&minutes_a, &hours_a);
       }
       
       delay_ms(100);
@@ -121,7 +121,7 @@ void main()
       //ds1307_read();
 
       if (minutes == minutes_a && hours == hours_a){//alarm
-         //output_toggle(PIN_B3); // toggle while the minutes and hours is equals
+         output_high(PIN_C2); // toggle while the minutes and hours is equals
       }
 
       lcd_pos_xy(1,1);
